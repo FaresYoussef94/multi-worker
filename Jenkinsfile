@@ -32,7 +32,6 @@ pipeline{
         stage('Deploy'){
             steps{
                 echo("Deploying to Kubernetes cluster")
-                sh 'kubectl delete -f kubernetes/'
                 sh 'kubectl apply -f kubernetes/'
             }
         }

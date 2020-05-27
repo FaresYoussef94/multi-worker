@@ -26,7 +26,14 @@ pipeline{
                 sh 'docker build -t ${DOCKER_REPO}/${DOCKER_IMAGE}:${BUILD_NUMBER} .'
                 echo("Pushing docker image to the repository")
                 sh 'docker push ${DOCKER_REPO}/${DOCKER_IMAGE}:${BUILD_NUMBER}'
-                sh 'kubectl get pods'
+            }
+        }
+
+        stage('Deploy'){
+            steps{
+                echo("Deploying to Kubernetes cluster")
+                sh 'kubectl delete -f kubernetes/'
+                sh 'kubectl apply -f kubernetes/'
             }
         }
 

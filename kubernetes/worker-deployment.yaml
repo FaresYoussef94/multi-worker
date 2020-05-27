@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: faresyoussef/multi-worker:4
+          image: faresyoussef/multi-worker
           env: #Creating an environment varables list
             - name: REDIS_HOST #environment variable key
               value: redis-cluster-ip-service #environment variable value
